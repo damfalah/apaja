@@ -10,33 +10,48 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieDrawable;
+
 public class SensorActivity extends AppCompatActivity {
-    TextView ProximitySensor, data;
-    SensorManager mySensorManager;
-    Sensor myProximitySensor;
+    private TextView proximitySensorTextView, data;
+    private LottieAnimationView sensorAnimation;
+    private SensorManager sensorManager;
+    private Sensor proximitySensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensor);
-        ProximitySensor = (TextView) findViewById(R.id.proximitySensor);
-        data = (TextView) findViewById(R.id.data);
-        mySensorManager = (SensorManager) getSystemService(
-                Context.SENSOR_SERVICE);
-        myProximitySensor = mySensorManager.getDefaultSensor(
-                Sensor.TYPE_PROXIMITY);
-        if (myProximitySensor == null) {
-            ProximitySensor.setText("Sensor Proximity Tidak Terdeteksi!");
+
+        proximitySensorTextView = findViewById(R.id.proximitySensor);
+        data = findViewById(R.id.data);
+        sensorAnimation = findViewById(R.id.sensorAnimation);
+
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+
+        if (proximitySensor == null) {
+            proximitySensorTextView.setText("Sensor Proximity Tidak Terdeteksi!");
         } else {
-            mySensorManager.registerListener(proximitySensorEventListener, myProximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+            sensorManager.registerListener(proximitySensorEventListener, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
+
+        startAnimation();
     }
-    SensorEventListener proximitySensorEventListener
-            = new SensorEventListener() {
+    private void startAnimation() {
+        sensorAnimation.setAnimation(R.raw.sensor_animation);
+        sensorAnimation.setRepeatCount(LottieDrawable.INFINITE);
+        sensorAnimation.playAnimation();
+    }
+
+
+    private SensorEventListener proximitySensorEventListener = new SensorEventListener() {
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
             // TODO Auto-generated method stub
         }
+
         @Override
         public void onSensorChanged(SensorEvent event) {
             // TODO Auto-generated method stub

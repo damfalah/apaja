@@ -10,39 +10,54 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class KoneksiActivity extends AppCompatActivity {
+
+    private TextView txtKoneksi;
+    private LottieAnimationView koneksiAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_koneksi);
 
-        Button btnCheck = (Button) findViewById(R.id.btnCheck);
+        txtKoneksi = findViewById(R.id.txtkoneksi);
+        koneksiAnimation = findViewById(R.id.koneksiAnimation);
+        Button btnCheck = findViewById(R.id.btnCheck);
+
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ConnectivityManager cm = (ConnectivityManager) getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo netInfo = cm.getActiveNetworkInfo();
-                if (netInfo != null && netInfo.isConnected()) {
-                    Toast.makeText(getApplication(), "You are connected to "+netInfo.getTypeName()+" "+netInfo.getSubtypeName(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplication(), "You don't have connection.", Toast.LENGTH_SHORT).show();
-                }
+                checkInternetConnection();
             }
         });
 
-        ConnectivityManager connectivity = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivity.getActiveNetworkInfo();
+        startAnimation();
+    }
 
-        if(networkInfo != null && networkInfo.isConnected()){
-            Toast.makeText(getApplicationContext(),"Terhubung Dengan Internet", Toast.LENGTH_LONG).show();
-        }else{
+    private void startAnimation() {
+        koneksiAnimation.setAnimation(R.raw.network_animation);
+        koneksiAnimation.playAnimation();
+    }
+
+    private void checkInternetConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (networkInfo != null && networkInfo.isConnected()) {
+            String connectionType = networkInfo.getTypeName() + " " + networkInfo.getSubtypeName();
+            Toast.makeText(getApplicationContext(), "You are connected to " + connectionType, Toast.LENGTH_SHORT).show();
+            txtKoneksi.setText("Connected to " + connectionType);
+        } else {
             AlertDialog.Builder alert = new AlertDialog.Builder(this)
-                    .setTitle("Tidak Ada Koneksi Internet")
-                    .setMessage("Silakan periksa koneksi internet anda dan coba lagi")
-                    .setPositiveButton("Tutup", new DialogInterface.OnClickListener() {
+                    .setTitle("No Internet Connection")
+                    .setMessage("Please check your internet connection and try again")
+                    .setPositiveButton("Close", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             finish();
@@ -50,6 +65,7 @@ public class KoneksiActivity extends AppCompatActivity {
                     });
             alert.setCancelable(false);
             alert.show();
+            txtKoneksi.setText("No Internet Connection");
         }
     }
 }
