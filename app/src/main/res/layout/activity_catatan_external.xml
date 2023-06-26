@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@drawable/bg4"
     tools:context=".CatatanExternalActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Aplikasi Catatan"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+        android:textSize="40dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
         android:text="Penyimpanan internal"
-        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textColor="@android:color/darker_gray" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -30,12 +42,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
-            android:hint="Tulis catatan disini"
+            android:fontFamily="sans-serif"
+            android:hint="Tulis catatan di sini"
             android:inputType="textMultiLine"
             android:minLines="5" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -46,25 +59,33 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SIMPAN CATATAN" />
-
-        <View
-            android:layout_width="16dp"
-            android:layout_height="match_parent" />
+            android:fontFamily="sans-serif-condensed"
+            android:text="SIMPAN CATATAN"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_shape"/>
 
         <Button
             android:id="@+id/btn_baca"
+            android:layout_marginLeft="5dp"
             android:layout_width="0dp"
+            android:fontFamily="sans-serif-condensed"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="LIHAT CATATAN" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            android:text="LIHAT CATATAN"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_shape"/>
+
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/text_catatan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>
