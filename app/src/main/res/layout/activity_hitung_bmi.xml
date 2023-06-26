@@ -6,36 +6,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/bg4"
     tools:context=".HitungBMIActivity">
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kalkulator BMI"
+        android:textColor="@color/colorPrimary"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Body Mass Index (BMI) adalah kalkulator sederhana untuk menghitung berat badan ideal berdasarkan tinggi dan berat badan."
+        android:textColor="#808080"
+        android:gravity="center"
+        android:layout_marginBottom="55dp"
+        />
 
     <EditText
         android:id="@+id/txtBeratBadan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Isikan berat badan (kg)"
-        android:inputType="number" />
+        android:hint="Isikan Berat Badan (kg)"
+        android:inputType="number"
+
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/txtTinggiBadan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Isikan tinggi badan (m)"
-        android:inputType="number|numberDecimal" />
+        android:hint="Isikan Tinggi Badan (m)"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/btnCekBMI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CEK BMI" />
+        android:text="CEK BMI"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:background="@drawable/button_shape"
+        android:textColor="#FFFFFF"/>
+
 
     <TextView
         android:id="@+id/txtStatusBadan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Status Badan"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        android:gravity="center"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp"
+        />
 
 </LinearLayout>
