@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:text="Kalkulator BMI"
         android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-condensed"
         android:shadowColor="#000000"
         android:shadowDx="0"
         android:shadowDy="2"
@@ -32,7 +33,8 @@
         android:textStyle="bold"
         android:text="Body Mass Index (BMI) adalah kalkulator sederhana untuk menghitung berat badan ideal berdasarkan tinggi dan berat badan."
         android:textColor="#808080"
-        android:gravity="center"
+        android:fontFamily="sans-serif"
+        android:gravity="left"
         android:layout_marginBottom="55dp"
         />
 
@@ -43,7 +45,7 @@
         android:ems="10"
         android:hint="Isikan Berat Badan (kg)"
         android:inputType="number"
-
+        android:fontFamily="sans-serif"
         android:minHeight="48dp" />
 
     <EditText
@@ -51,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="sans-serif"
         android:hint="Isikan Tinggi Badan (m)"
         android:inputType="number|numberDecimal"
         android:minHeight="48dp" />
@@ -63,6 +66,7 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/colorPrimary"
         android:background="@drawable/button_shape"
+        android:fontFamily="sans-serif"
         android:textColor="#FFFFFF"/>
 
 
@@ -71,6 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Status Badan"
+        android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:textSize="24sp"
         android:layout_marginTop="16dp"
