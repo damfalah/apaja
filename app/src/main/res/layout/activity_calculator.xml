@@ -25,10 +25,9 @@
         android:layout_below="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:id="@+id/editTextNumber1"
+        android:id="@+id/angka_pertama"
         android:hint="Masukkan angka ke 1"
         android:paddingLeft="20dp"
-        android:background="@drawable/ic_button"
         android:backgroundTint="#FFFFFF"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -39,13 +38,12 @@
         android:layout_marginBottom="16dp" />
 
     <EditText
-        android:layout_below="@+id/editTextNumber1"
+        android:layout_below="@+id/angka_pertama"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/angka_kedua"
         android:hint="Masukkan angka ke 2"
         android:paddingLeft="20dp"
-        android:background="@drawable/ic_button"
         android:backgroundTint="#FFFFFF"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -56,10 +54,10 @@
         android:layout_marginBottom="16dp" />
 
     <Button
-        android:id="@+id/buttonAdd"
+        android:id="@+id/tambah"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextNumber2"
+        android:layout_below="@+id/angka_kedua"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="15dp"
         android:gravity="center"
@@ -68,55 +66,54 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/buttonSubtract"
+        android:id="@+id/kurang"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextNumber2"
+        android:layout_below="@+id/angka_kedua"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="20dp"
         android:text="-"
-        android:layout_toRightOf="@+id/buttonAdd"
-        android:layout_toEndOf="@+id/buttonAdd" />
+        android:layout_toRightOf="@+id/tambah"
+        android:layout_toEndOf="@+id/tambah" />
 
     <Button
-        android:id="@+id/buttonMultiply"
+        android:id="@+id/kali"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextNumber2"
+        android:layout_below="@+id/angka_kedua"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="20dp"
         android:text="*"
-        android:layout_toRightOf="@+id/buttonSubtract"
-        android:layout_toEndOf="@+id/buttonSubtract" />
+        android:layout_toRightOf="@+id/kurang"
+        android:layout_toEndOf="@+id/kurang" />
 
     <Button
-        android:id="@+id/buttonDivide"
+        android:id="@+id/bagi"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextNumber2"
+        android:layout_below="@+id/angka_kedua"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="20dp"
         android:text="/"
-        android:layout_toRightOf="@+id/buttonMultiply"
-        android:layout_toEndOf="@+id/buttonMultiply" />
+        android:layout_toRightOf="@+id/kali"
+        android:layout_toEndOf="@+id/kali" />
 
     <Button
-        android:id="@+id/buttonClear"
+        android:id="@+id/bersihkan"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonAdd"
+        android:layout_below="@+id/tambah"
         android:layout_marginTop="16dp"
         android:text="Clear"
         android:textColor="@color/putih"
-        android:background="@drawable/ic_button"
         android:fontFamily="sans-serif-condensed"
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/textViewResultLabel"
+        android:id="@+id/hasil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonClear"
+        android:layout_below="@+id/bersihkan"
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Result"
@@ -127,7 +124,7 @@
         android:id="@+id/textViewResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewResultLabel"
+        android:layout_below="@+id/hasil"
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="0"
