@@ -129,9 +129,7 @@ public class GPS extends AppCompatActivity {
         gpsDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-                int width = 710;
-                int height = 610;
-                gpsDialog.getWindow().setLayout(width, height);
+                gpsDialog.getWindow();
             }
         });
 

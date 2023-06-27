@@ -5,42 +5,97 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg4"
     tools:context=".InternalExternalActivity">
 
-    <Button
-        android:id="@+id/btnBuatFile"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/textBaca"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textMultiLine"
+            android:background="@drawable/button_shape_white"
+            android:ems="10"
+            android:layout_margin="5dp"
+            android:gravity="left|top"
+            android:padding="5dp"
+            android:hint="Hasil Baca File"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Buat File"/>
+        android:weightSum="2">
 
-    <Button
-        android:id="@+id/btnUbahFile"
+        <Button
+            android:id="@+id/btnBuatFile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Buat File"
+            android:background="@drawable/button_shape"
+            android:textColor="@color/putih"
+            android:layout_margin="10dp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:elevation="8dp"
+            android:stateListAnimator="@animator/button_click_anim"/>
+
+        <Button
+            android:id="@+id/btnUbahFile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ubah File"
+            android:background="@drawable/button_shape"
+            android:textColor="@color/putih"
+            android:layout_margin="10dp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:elevation="8dp"
+            android:stateListAnimator="@animator/button_click_anim"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ubah File"/>
+        android:weightSum="2">
 
-    <Button
-        android:id="@+id/btnBacaFile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Baca File"/>
+        <Button
+            android:id="@+id/btnBacaFile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Baca File"
+            android:background="@drawable/button_shape"
+            android:textColor="@android:color/white"
+            android:layout_margin="10dp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:elevation="8dp"
+            android:stateListAnimator="@animator/button_click_anim"/>
 
-    <Button
-        android:id="@+id/btnHapusFile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hapus File"/>
+        <Button
+            android:id="@+id/btnHapusFile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hapus File"
+            android:background="@drawable/button_shape"
+            android:textColor="@color/putih"
+            android:layout_margin="10dp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:elevation="8dp"
+            android:stateListAnimator="@animator/button_click_anim"/>
 
-    <EditText
-        android:id="@+id/textBaca"
-        android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:inputType="textMultiLine"
-        android:background="@android:color/darker_gray"
-        android:ems="10"
-        android:gravity="left|top"
-        android:padding="5dp"
-        android:layout_marginTop="10dp"
-        android:hint="Hasil Baca File"/>
+    </LinearLayout>
 
 </LinearLayout>
