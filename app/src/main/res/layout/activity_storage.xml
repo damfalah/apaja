@@ -1,30 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg4"
     tools:context=".StorageActivity">
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="STORAGE"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        />
 
     <EditText
         android:id="@+id/input_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="20dp"
         android:ems="10"
-        android:hint="Masukan Data"
+        android:hint="Masukkan Data"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/save_internal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Simpan ke Internal" />
+        android:textColor="@color/putih"
+        android:fontFamily="sans-serif"
+
+        android:text="Simpan ke Internal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textStyle="bold"
+        android:textSize="17dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/button_shape"
+        />
 
     <Button
         android:id="@+id/save_external"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/putih"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="17dp"
+        android:fontFamily="sans-serif"
+        android:background="@drawable/button_shape"
         android:text="Simpan ke External" />
 
 </LinearLayout>
