@@ -1,52 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bg4"
+    android:padding="16dp"
     tools:context=".PegawaiMainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nama Pegawai" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextName" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Posisi" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextDesg" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gaji" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextSalary" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Tambah Pegawai"
-        android:id="@+id/buttonAdd" />
-    <Button
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginBottom="32dp" />
+
+    <EditText
+        android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Daftar Pegawai"
-        android:id="@+id/buttonView" />
+        android:hint="Nama Pegawai"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editTextDesg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Posisi"
+        android:inputType="text"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editTextSalary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Gaji"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_marginBottom="32dp" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tambah"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_shape"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:fontFamily="sans-serif-medium" />
+
+    <Button
+        android:id="@+id/buttonView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lihat Semua Pegawai"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@drawable/button_shape_white"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:fontFamily="sans-serif-medium" />
 
 </LinearLayout>

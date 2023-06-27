@@ -16,7 +16,6 @@ import java.util.HashMap;
 
 public class PegawaiMainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    //Dibawah ini merupakan perintah untuk mendefinikan View
     private EditText editTextName;
     private EditText editTextDesg;
     private EditText editTextSal;
@@ -29,24 +28,39 @@ public class PegawaiMainActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pegawai_main);
 
-        //Inisialisasi dari View
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextDesg = (EditText) findViewById(R.id.editTextDesg);
-        editTextSal = (EditText) findViewById(R.id.editTextSalary);
+        editTextName = findViewById(R.id.editTextName);
+        editTextDesg = findViewById(R.id.editTextDesg);
+        editTextSal = findViewById(R.id.editTextSalary);
 
-        buttonAdd = (Button) findViewById(R.id.buttonAdd);
-        buttonView = (Button) findViewById(R.id.buttonView);
+        buttonAdd = findViewById(R.id.buttonAdd);
+        buttonView = findViewById(R.id.buttonView);
 
-        //Setting listeners to button
         buttonAdd.setOnClickListener(this);
         buttonView.setOnClickListener(this);
     }
 
-    //Dibawah ini merupakan perintah untuk Menambahkan Pegawai (CREATE)
     private void addEmployee(){
         final String name = editTextName.getText().toString().trim();
         final String desg = editTextDesg.getText().toString().trim();
         final String sal = editTextSal.getText().toString().trim();
+
+        if (name.isEmpty()) {
+            editTextName.setError("Nama tidak boleh kosong");
+            editTextName.requestFocus();
+            return;
+        }
+
+        if (desg.isEmpty()) {
+            editTextDesg.setError("Posisi tidak boleh kosong");
+            editTextDesg.requestFocus();
+            return;
+        }
+
+        if (sal.isEmpty()) {
+            editTextSal.setError("Gaji tidak boleh kosong");
+            editTextSal.requestFocus();
+            return;
+        }
 
         class AddEmployee extends AsyncTask<Void,Void,String> {
 
