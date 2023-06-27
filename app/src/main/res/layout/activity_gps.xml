@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:gravity="center_horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg4"
+    android:gravity="center"
     android:orientation="vertical">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/gpsAnimation"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:visibility="invisible"
+        app:lottie_rawRes="@raw/gps_animation"
+        />
+
+
     <TextView
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lokasi GPS Sekarang"
+        android:text="Lokasi GPS Saat Ini"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
+
     <Button
-        android:id="@+id/getLocation"
-        android:text="Dapatkan Lokasi"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Dapatkan Lokasi"
+        android:id="@+id/getLocation"
+        android:layout_gravity="center"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_shape"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium" />
+
+
+
 </LinearLayout>

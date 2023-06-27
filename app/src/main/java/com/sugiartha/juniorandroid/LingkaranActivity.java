@@ -5,31 +5,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-public class LingkaranActivity extends AppCompatActivity {
+import com.google.android.material.textfield.TextInputEditText;
 
-    Button hitung;
-    EditText jari2;
-    TextView nilai;
+public class LingkaranActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lingkaran);
 
-        hitung = (Button) findViewById(R.id.hitung);
-        jari2 = (EditText) findViewById(R.id.jari2);
-        nilai = (TextView) findViewById(R.id.nilai);
+        TextInputEditText jari2EditText = findViewById(R.id.jari2Layout).findViewById(R.id.jari2);
+        Button hitungButton = findViewById(R.id.hitung);
+        TextView kelilingTextView = findViewById(R.id.keliling);
+        TextView luasTextView = findViewById(R.id.luas);
 
-        hitung.setOnClickListener(new Button.OnClickListener() {
-            @Override public void onClick(View v) {
-                double jari = Double.parseDouble(jari2.getText().toString());
+        hitungButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double jari = Double.parseDouble(jari2EditText.getText().toString());
                 double phi = 3.14;
-                double luas = phi*jari*jari;
-                double keliling = 2*phi*jari;
-                nilai.setText("Luas Lingkaran : " + Double.toString(luas) + "\nKeliling Lingkaran : " + Double.toString(keliling) + "");
-            }});
+                double dblKeliling = 2 * phi * jari;
+                double dblLuas = phi * jari * jari;
+
+                kelilingTextView.setText(Double.toString(dblKeliling));
+                luasTextView.setText(Double.toString(dblLuas));
+            }
+        });
     }
 }
