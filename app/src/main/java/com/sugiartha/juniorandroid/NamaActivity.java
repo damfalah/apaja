@@ -1,7 +1,9 @@
 package com.sugiartha.juniorandroid;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -9,14 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupWindow;
 import android.widget.TextView;
+
 
 public class NamaActivity extends AppCompatActivity {
 
     Button btnOk;
     EditText editNama, editEmail, editNoHP;
-    PopupWindow popupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,20 +67,33 @@ public class NamaActivity extends AppCompatActivity {
             return;
         }
 
-        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_layout, null);
-        popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View popupView = inflater.inflate(R.layout.popup_layout, null);
+
         TextView txtPopup = popupView.findViewById(R.id.txtPopup);
+        Button btnDismiss = popupView.findViewById(R.id.btnDismiss);
+
         txtPopup.setText("Halo " + nama + "!\nAnda telah terdaftar sebagai peserta VSGA.\nEmail: " + email + "\nNo HP: " + noHP);
 
-        Button btnDismiss = popupView.findViewById(R.id.btnDismiss);
-        btnDismiss.setOnClickListener(new View.OnClickListener() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(popupView);
+
+        final AlertDialog alertDialog = builder.create();
+
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
+            public void onShow(DialogInterface dialogInterface) {
+                alertDialog.getWindow();
             }
         });
 
-        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
-    }
+        alertDialog.show();
 
+        btnDismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
 }

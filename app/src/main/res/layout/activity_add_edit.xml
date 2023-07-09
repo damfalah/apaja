@@ -6,7 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg4"
     tools:context=".AddEditActivity">
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TAMBAH DATA"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        />
 
     <EditText
         android:id="@+id/txt_id"
@@ -19,6 +37,9 @@
         android:id="@+id/txt_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Input Nama"/>
 
     <EditText
@@ -26,6 +47,9 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Input Alamat"/>
 
     <LinearLayout
@@ -39,6 +63,13 @@
             android:layout_weight="0.5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/putih"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/button_shape"
             android:text="Submit"/>
 
         <Button
@@ -46,6 +77,11 @@
             android:layout_weight="0.5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/putih"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/button_shape"
             android:text="Cancel"/>
 
     </LinearLayout>

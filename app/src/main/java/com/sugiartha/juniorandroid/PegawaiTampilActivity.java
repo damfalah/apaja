@@ -8,10 +8,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.sugiartha.juniorandroid.RequestHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,7 +22,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class PegawaiTampilActivity extends AppCompatActivity implements View.OnClickListener{
+public class PegawaiTampilActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextId;
     private EditText editTextName;
@@ -39,13 +42,13 @@ public class PegawaiTampilActivity extends AppCompatActivity implements View.OnC
 
         id = intent.getStringExtra(konfigurasi.EMP_ID);
 
-        editTextId = (EditText) findViewById(R.id.editTextId);
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextDesg = (EditText) findViewById(R.id.editTextDesg);
-        editTextSalary = (EditText) findViewById(R.id.editTextSalary);
+        editTextId = findViewById(R.id.editTextId);
+        editTextName = findViewById(R.id.editTextName);
+        editTextDesg = findViewById(R.id.editTextDesg);
+        editTextSalary = findViewById(R.id.editTextSalary);
 
-        buttonUpdate = (Button) findViewById(R.id.buttonUpdate);
-        buttonDelete = (Button) findViewById(R.id.buttonDelete);
+        buttonUpdate = findViewById(R.id.buttonUpdate);
+        buttonDelete = findViewById(R.id.buttonDelete);
 
         buttonUpdate.setOnClickListener(this);
         buttonDelete.setOnClickListener(this);
@@ -53,13 +56,14 @@ public class PegawaiTampilActivity extends AppCompatActivity implements View.OnC
         getEmployee();
     }
 
-    private void getEmployee(){
-        class GetEmployee extends AsyncTask<Void,Void,String> {
+    private void getEmployee() {
+        class GetEmployee extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;
+
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(PegawaiTampilActivity.this,"Fetching...","Wait...",false,false);
+                loading = ProgressDialog.show(PegawaiTampilActivity.this, "Fetching...", "Wait...", false, false);
             }
 
             @Override
@@ -72,7 +76,7 @@ public class PegawaiTampilActivity extends AppCompatActivity implements View.OnC
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequestParam(konfigurasi.URL_GET_EMP,id);
+                String s = rh.sendGetRequestParam(konfigurasi.URL_GET_EMP, id);
                 return s;
             }
         }
@@ -80,7 +84,7 @@ public class PegawaiTampilActivity extends AppCompatActivity implements View.OnC
         ge.execute();
     }
 
-    private void showEmployee(String json){
+    private void showEmployee(String json) {
         try {
             JSONObject jsonObject = new JSONObject(json);
             JSONArray result = jsonObject.getJSONArray(konfigurasi.TAG_JSON_ARRAY);
@@ -98,37 +102,56 @@ public class PegawaiTampilActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    private void updateEmployee(){
+    private void updateEmployee() {
         final String name = editTextName.getText().toString().trim();
         final String desg = editTextDesg.getText().toString().trim();
         final String salary = editTextSalary.getText().toString().trim();
 
-        class UpdateEmployee extends AsyncTask<Void,Void,String>{
+        if (TextUtils.isEmpty(name)) {
+            editTextName.setError("Nama tidak boleh kosong");
+            editTextName.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(desg)) {
+            editTextDesg.setError("Posisi tidak boleh kosong");
+            editTextDesg.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(salary)) {
+            editTextSalary.setError("Salary tidak boleh kosong");
+            editTextSalary.requestFocus();
+            return;
+        }
+
+        class UpdateEmployee extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;
+
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(PegawaiTampilActivity.this,"Updating...","Wait...",false,false);
+                loading = ProgressDialog.show(PegawaiTampilActivity.this, "Updating...", "Wait...", false, false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(PegawaiTampilActivity.this,s,Toast.LENGTH_LONG).show();
+                Toast.makeText(PegawaiTampilActivity.this, s, Toast.LENGTH_LONG).show();
             }
 
             @Override
             protected String doInBackground(Void... params) {
-                HashMap<String,String> hashMap = new HashMap<>();
-                hashMap.put(konfigurasi.KEY_EMP_ID,id);
-                hashMap.put(konfigurasi.KEY_EMP_NAMA,name);
-                hashMap.put(konfigurasi.KEY_EMP_POSISI,desg);
-                hashMap.put(konfigurasi.KEY_EMP_GAJIH,salary);
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put(konfigurasi.KEY_EMP_ID, id);
+                hashMap.put(konfigurasi.KEY_EMP_NAMA, name);
+                hashMap.put(konfigurasi.KEY_EMP_POSISI, desg);
+                hashMap.put(konfigurasi.KEY_EMP_GAJIH, salary);
 
                 RequestHandler rh = new RequestHandler();
 
-                String s = rh.sendPostRequest(konfigurasi.URL_UPDATE_EMP,hashMap);
+                String s = rh.sendPostRequest(konfigurasi.URL_UPDATE_EMP, hashMap);
 
                 return s;
             }
@@ -138,8 +161,8 @@ public class PegawaiTampilActivity extends AppCompatActivity implements View.OnC
         ue.execute();
     }
 
-    private void deleteEmployee(){
-        class DeleteEmployee extends AsyncTask<Void,Void,String> {
+    private void deleteEmployee() {
+        class DeleteEmployee extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;
 
             @Override
@@ -167,7 +190,7 @@ public class PegawaiTampilActivity extends AppCompatActivity implements View.OnC
         de.execute();
     }
 
-    private void confirmDeleteEmployee(){
+    private void confirmDeleteEmployee() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Apakah Kamu Yakin Ingin Menghapus Pegawai ini?");
         alertDialogBuilder.setPositiveButton("Ya",
@@ -175,7 +198,7 @@ public class PegawaiTampilActivity extends AppCompatActivity implements View.OnC
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         deleteEmployee();
-                        startActivity(new Intent(PegawaiTampilActivity.this,PegawaiTampilSemuaActivity.class));
+                        startActivity(new Intent(PegawaiTampilActivity.this, PegawaiTampilSemuaActivity.class));
                     }
                 });
         alertDialogBuilder.setNegativeButton("Tidak",
@@ -190,12 +213,13 @@ public class PegawaiTampilActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        if(v == buttonUpdate){
+        if (v == buttonUpdate) {
             updateEmployee();
         }
 
-        if(v == buttonDelete){
+        if (v == buttonDelete) {
             confirmDeleteEmployee();
         }
     }
 }
+
